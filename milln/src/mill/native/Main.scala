@@ -15,7 +15,6 @@ object Main {
 
     downloadMillTo(config.millVersion, config.millDownloadPath)
     launch(config)
-    zioPart
   }
 
   def trySttp() = {
@@ -50,15 +49,15 @@ object Main {
     millProcess.waitFor()
   }
 
-  def zioPart = {
-    import zio._
-    val runtime = Runtime.default
+  // def zioPart = {
+  //   import zio._
+  //   val runtime = Runtime.default
 
-    Unsafe.unsafe { implicit u =>
-      runtime.unsafe
-        .run(ZIO.attempt(println("Hello World!")))
-        .getOrThrowFiberFailure()
-    }
-  }
+  //   Unsafe.unsafe { implicit u =>
+  //     runtime.unsafe
+  //       .run(ZIO.attempt(println("Hello World!")))
+  //       .getOrThrowFiberFailure()
+  //   }
+  // }
 
 }

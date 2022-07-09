@@ -10,9 +10,9 @@ object milln extends ScalaNativeModule {
     Deps.com.lihaoyi.mainargs,
     Deps.com.lihaoyi.`os-lib`,
     Deps.com.lihaoyi.pprint,
-    Deps.com.softwaremill.sttp.client3.core,
-    Deps.dev.zio.zio,
-    Deps.io.github.cquiroz.`scala-java-time`,
-    Deps.io.github.cquiroz.`scala-java-time-tzdb`
+    Deps.com.softwaremill.sttp.client3.core
+    // Deps.dev.zio.zio,
+    // Deps.io.github.cquiroz.`scala-java-time`,
+    // Deps.io.github.cquiroz.`scala-java-time-tzdb`
   )
 }
