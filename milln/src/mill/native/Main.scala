@@ -14,6 +14,8 @@ object Main {
     println(s"Config: $config")
 
     downloadMillTo(config.millVersion, config.millDownloadPath)
+    launch(config)
+    zioPart
   }
 
   def trySttp() = {
@@ -36,6 +38,27 @@ object Main {
   }
 
   def downloadMillTo(millVersion: String, millDownloadPath: os.Path) = {
-    os.makeDir.all(millDownloadPath)
+    println(s"Downloading mill version '$millVersion' to $millDownloadPath")
+    // os.makeDir.all(millDownloadPath)
   }
+
+  def launch(config: Config) = {
+    val millPath = config.millDownloadPath / config.millVersion
+    println(s"Launching mill at $millPath")
+    val millProcess =
+      Shell.startMill("exec", Seq(millPath.toString(), "--version"))
+    millProcess.waitFor()
+  }
+
+  def zioPart = {
+    import zio._
+    val runtime = Runtime.default
+
+    Unsafe.unsafe { implicit u =>
+      runtime.unsafe
+        .run(ZIO.attempt(println("Hello World!")))
+        .getOrThrowFiberFailure()
+    }
+  }
+
 }

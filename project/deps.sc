@@ -15,6 +15,24 @@ object Deps {
       }
     }
   }
+
+  case object dev {
+    case object zio {
+      val zio = ivy"dev.zio::zio::${Versions.zio}"
+    }
+  }
+
+  case object io {
+    case object github {
+      case object cquiroz {
+        val `scala-java-time` =
+          ivy"io.github.cquiroz::scala-java-time::${Versions.scalaJavaTime}"
+        val `scala-java-time-tzdb` =
+          ivy"io.github.cquiroz::scala-java-time-tzdb::${Versions.scalaJavaTime}"
+
+      }
+    }
+  }
 }
 
 object Versions {
@@ -22,6 +40,8 @@ object Versions {
   val oslib = "0.8.1"
   val pprint = "0.7.0"
   val sttp = "3.6.2"
+  val scalaJavaTime = "2.4.0"
+  val zio = "2.0.0"
 }
 
 object ScalaVersions {
